@@ -1,0 +1,514 @@
+html, body {
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    position: relative;
+    background: linear-gradient(135deg, rgba(42, 44, 76, 0.95) 0%, rgba(106, 41, 98, 0.95) 100%),
+                url('../assets/bg.jpg') center/cover fixed;
+}
+
+.glass-nav {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 768px) {
+    .brand-container {
+        margin-left: 1rem;
+        padding-right: 0.5rem;
+    }
+
+    .brand-text {
+        font-size: 1.5rem;
+    }
+
+    .coming-soon-text {
+        font-size: 2.5rem;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+
+    .countdown-container {
+        max-width: 200px;
+        margin: 1rem auto;
+    }
+
+    .countdown-number {
+        font-size: 2rem;
+    }
+
+    .countdown-label {
+        font-size: 0.875rem;
+    }
+
+    .social-links {
+        gap: 1rem;
+    }
+
+    .social-button {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .social-button svg {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+}
+
+#mobileMenu {
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#mobileMenu .nav-pill {
+    margin: 0.5rem 1rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    display: block;
+    transition: all 0.3s ease;
+    position: relative;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#mobileMenu .nav-pill:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+}
+
+#mobileMenu .nav-pill.active {
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#mobileMenu {
+    transition: height 0.3s ease-in-out;
+}
+
+#mobileMenu.h-0 {
+    height: 0px !important;
+}
+
+#mobileMenu.h-auto {
+    height: auto !important;
+}
+
+@media (max-width: 768px) {
+    main {
+        padding-top: 5rem;
+    }
+
+    section {
+        padding: 2rem 1rem;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 2rem 1rem;
+    }
+
+    footer p {
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.brand-text {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(to right, #fff, #9F7AEA, #ED64A6, #fff);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientFloat 3s ease-in-out infinite;
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+@keyframes gradientFloat {
+    0% {
+        transform: translateY(0);
+        background-position: 0% 50%;
+    }
+    50% {
+        transform: translateY(-4px);
+        background-position: 100% 50%;
+    }
+    100% {
+        transform: translateY(0);
+        background-position: 0% 50%;
+    }
+}
+
+.brand-text::before,
+.brand-text::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: white;
+    opacity: 0;
+    animation: sparkle 3s ease-in-out infinite;
+    will-change: transform, opacity;
+}
+
+.brand-text::before {
+    top: -6px;
+    left: 20%;
+}
+
+.brand-text::after {
+    top: -3px;
+    right: 20%;
+    animation-delay: 0.5s;
+}
+
+@keyframes sparkle {
+    0%, 100% { 
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1) translateY(-8px);
+        opacity: 0.8;
+    }
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+}
+
+.brand-container {
+    margin-left: 2rem;
+    padding-right: 1rem;
+}
+
+.countdown-container {
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.countdown-ring {
+    transform: rotate(-90deg);
+    transform-origin: center;
+    transition: stroke-dashoffset 0.8s ease-in-out;
+}
+
+.countdown-background {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.1);
+}
+
+.countdown-progress {
+    fill: none;
+    stroke: url(#gradient);
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s ease-in-out;
+}
+
+.countdown-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+}
+
+.countdown-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1;
+    background: linear-gradient(135deg, #9F7AEA, #ED64A6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: pulse 2s infinite;
+}
+
+.countdown-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    background: linear-gradient(135deg, #9F7AEA, #ED64A6);
+    border-radius: 50%;
+    animation: float 3s infinite;
+    opacity: 0.5;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translateY(-8px) scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+.nav-pill {
+    position: relative;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    border-radius: 9999px;
+}
+
+.nav-pill::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.nav-pill:hover {
+    color: white;
+}
+
+.nav-pill:hover::before {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.nav-pill.active {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+}
+
+.nav-pill.active::before {
+    transform: scale(1);
+    opacity: 1;
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(159, 122, 234, 0.7);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px 5px rgba(159, 122, 234, 0.5);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.atmosphere {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.light-beam {
+    position: absolute;
+    width: 100px;
+    height: 800px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%);
+    transform: rotate(45deg);
+    filter: blur(20px);
+    animation: beam 8s infinite linear;
+    opacity: 0;
+}
+
+@keyframes beam {
+    0% {
+        transform: rotate(45deg) translateX(-100%) translateY(-100%);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.5;
+    }
+    80% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: rotate(45deg) translateX(100%) translateY(100%);
+        opacity: 0;
+    }
+}
+
+section {
+    scroll-margin-top: 5rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.social-button {
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    color: white;
+    text-decoration: none;
+}
+
+.social-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        rgba(159, 122, 234, 0.5),
+        rgba(237, 100, 166, 0.5)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.social-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.social-button:hover::before {
+    opacity: 1;
+}
+
+.social-button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.social-button:hover svg {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.social-button.whatsapp:hover {
+    background: #25D366;
+}
+
+.social-button.instagram:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.social-button.linkedin:hover {
+    background: #0077b5;
+}
+
+.social-button .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+.coming-soon-text {
+    color: #fff;
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 20px rgba(255, 255, 255, 0.6),
+        0 0 30px rgba(255, 255, 255, 0.4),
+        0 0 40px rgba(100, 149, 237, 0.3),
+        0 0 70px rgba(100, 149, 237, 0.2),
+        0 0 80px rgba(100, 149, 237, 0.1);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    animation: glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 
+            0 0 10px rgba(255, 255, 255, 0.8),
+            0 0 20px rgba(255, 255, 255, 0.6),
+            0 0 30px rgba(255, 255, 255, 0.4),
+            0 0 40px rgba(100, 149, 237, 0.3),
+            0 0 70px rgba(100, 149, 237, 0.2),
+            0 0 80px rgba(100, 149, 237, 0.1);
+    }
+    to {
+        text-shadow: 
+            0 0 20px rgba(255, 255, 255, 0.8),
+            0 0 30px rgba(255, 255, 255, 0.6),
+            0 0 40px rgba(255, 255, 255, 0.4),
+            0 0 50px rgba(100, 149, 237, 0.3),
+            0 0 80px rgba(100, 149, 237, 0.2),
+            0 0 90px rgba(100, 149, 237, 0.1);
+    }
+}
